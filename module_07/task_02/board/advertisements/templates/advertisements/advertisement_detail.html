@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Title</title>
+</head>
+<body>
+<div class="detail-container">
+    <a href="{% url 'advertisements' %}">Назад</a>
+</div>
+
+<div class="detail-container">
+    <ul>
+        <h4>
+            <p>Заголовок: {{ object.title }}</p>
+            <p>Цена: {{ object.price }} руб. ({% widthratio object.price object.price_exch 1 %} $)</p>
+            <p>Описание: {{ object.descriptions }}</p>
+            <p>Рубрика: {{ object.heading_status }}</p>
+            <p>Тип объявления:
+            {% if object.type_adv == 'Free' %}
+                Бесплатное
+            {% else %}
+                Платное
+            {% endif %}</p>
+            <p>Контактное лицо:</p>
+        </h4>
+        <p>{{ object.users_status }}</p>
+        <p>{{ object.users_status.mail_address }}</p>
+        <p>тел.: {{ object.users_status.phone }}</p>
+        <p>Просмотров: {{ object.view_count }}</p>
+    </ul>
+</div>
+
+</body>
+</html>

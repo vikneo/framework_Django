@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Company</title>
+</head>
+<ul>
+    <a href="..\">Назад</a>
+</ul>
+<ul>
+    {% for key, item in company.items %}
+        <h3><b>{{key}}:</b></h3>
+        {% for advertisement in item %}
+        <li>{{advertisement}}</li>
+        {% endfor %}
+    {% endfor %}
+</ul>
+</html>

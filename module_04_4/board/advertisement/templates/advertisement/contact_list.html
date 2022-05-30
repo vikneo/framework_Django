@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact</title>
+<html>
+<ul>
+    <a href="..\">Назад</a>
+</ul>
+<ul>
+    {% for name, contact in contacts.items %}
+        <h3><b>{{name}}:</b></h3>
+        {% for key, item in contact.items %}
+        <li><b>{{key}}</b> : {{item}}</li>
+        {% endfor %}
+    {% endfor %}
+</ul>
+</html>

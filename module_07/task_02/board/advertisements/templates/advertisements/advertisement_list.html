@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Title</title>
+</head>
+<body>
+<div class="header-container">
+    <p>
+        <a href="{% url 'index-list' %}">Назад</a>
+    </p>
+    <h1>Бесплатные объявления</h1>
+</div>
+<div class="container">
+    {% if advertisement_list %}
+    <ul class="header-ul">
+        {% for advertisement in advertisement_list %}
+        <li>
+            <h3>
+                <p>{{ advertisement.heading_status }}</p>
+                <a href="{% url 'advertisement-detail' advertisement.id %}">{{ advertisement.title }}</a>
+                 - {{ advertisement.price }}.руб
+            </h3>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>Объявлений нет.</p>
+    {% endif %}
+</div>
+</body>
+</html>

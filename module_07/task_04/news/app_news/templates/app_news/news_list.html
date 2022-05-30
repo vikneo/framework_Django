@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <title>Новости</title>
+</head>
+<body>
+<header class="header-container">
+    <h2>Новостной сайт</h2>
+</header>
+<div class="container">
+    <p>
+    <h2><a href="{% url 'create-news' %}">Добавить новость</a></h2>
+    </p>
+    {% if news_list %}
+    <ul>{% for news in news_list %}
+        {% if news.flag_news %}
+        <div class="cow-2">
+            <p class="cow-p cow-date">
+                {{ news.created_date }}
+            </p>
+            <p class="cow-p">
+                {{ news.name }}
+            </p>
+            <p class="cow-p">
+                <a href="{% url 'news-detail' news.pk %}">просмотр</a>
+            </p>
+        </div>
+        {% else %}
+        <P style="font-size: 10px;">Имеются скрытые данные. Вы это читаете благодаря flag_news=False</P>
+        {% endif %}
+        {% endfor %}
+    </ul>
+    {% else %}
+    <h3>объявлений нет.</h3>
+    {% endif %}
+</div>
+</body>
+</html>

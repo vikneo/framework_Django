@@ -1,0 +1,32 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Регионы</title>
+</head>
+
+<body>
+<ul>
+    <a href="..\">Назад</a>
+</ul>
+<ul>
+    <form action="city/">
+        {% csrf_token %}
+        <input list="reg" type="text" name="region"/>
+        <datalist id="reg">
+            {% for city in regions %}
+            <option value="{{ city }}">
+            {% endfor %}
+        </datalist>
+        <input type="submit" value="Показать регионы">
+    </form>
+
+    <form action="add/" method="post">
+        {% csrf_token %}
+        Логин <input type="text" name="login">
+        Пароль <input type="text" name="password">
+        <input type="submit" value="LOGIN" id="">
+    </form>
+</ul>
+</body>
+</html>

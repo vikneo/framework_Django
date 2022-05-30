@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Новость</title>
+</head>
+<body>
+<header class="header-container">
+    <h2>{{ news_detail.name }}</h2>
+</header>
+<div class="cow-1">
+    <ul>
+        <a href="{% url 'news-list' %}">Назад</a>
+    </ul>
+</div>
+<div class="cow-1">
+    <div>
+        <ul>
+            <p style="font-size: 13px;">Дата создания: {{ news_detail.created_date }}</p>
+            <h3>{{ news_detail.descriptions }}</h3><br>
+            <p class="edit-p" style="font-weight: bold;">
+                Комментарии ({{ news_detail.commentaries_news.all.count }})
+                <a style="padding-right: 25px;" href="{% url 'news-regedit' news_detail.pk %}">Редактировать</a>
+            </p>
+            <hr>
+            <p>
+                {% if news_detail.commentaries_news.all %}
+                {% for comment in news_detail.commentaries_news.all %}
+            <h4>- {{ comment.user_name }}:</h4>
+            <ul>
+                {{ comment.comment }}
+            </ul>
+            {% endfor %}
+            {% else %}
+            Комментарии отсутствуют.
+            {% endif %}
+            </p>
+            <hr>
+            <p>
+                Добавить комментарий
+            </p>
+            <div class="cow-4">
+                <form action="" id="add_form" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                </form>
+                <button form="add_form" type="submit">Добавить</button>
+            </div>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

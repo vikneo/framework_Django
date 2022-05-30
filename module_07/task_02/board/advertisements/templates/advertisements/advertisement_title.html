@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <title>Title</title>
+</head>
+<body>
+<header>
+    <div class="header-container">
+        <p class="header-p">Corp.© Limited Advert First</p>
+        <h1 style="text-transform: uppercase;">Добро пожаловать!</h1>
+    </div>
+    <div class="container-info">
+        <h2>Сайт бесплатных объявлений</h2>
+    </div>
+</header>
+
+<div class="container">
+    {% if titles %}
+    <a href="{% url 'advertisements' %}" class="block-modules">Просмотреть объявления</a>
+    {% else %}
+    <p>Объявлений нет.</p>
+    {% endif %}
+</div>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>City</title>
+</head>
+<body>
+<ul>
+    <a href="..\">Назад</a>
+</ul>
+<ul>
+    {% for citys, item in regions.items %}
+        {% if citys == city %}
+            {{ citys }}
+            {% for reg in item %}
+                <li>{{ reg }}</li>
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+</ul>
+<ul>
+    {% csrf_token %}
+    {{ region }}
+</ul>
+</body>
+</html>

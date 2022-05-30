@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Title</title>
+</head>
+<body>
+<header class="header-container">
+    <h2>Создать новость</h2>
+</header>
+<div class="cow-1">
+    <a href="{% url 'news-list' %}">Назад</a>
+</div>
+<div class="cow-1" style="align-items: center;">
+    <form action="" id="edit_form" method="post">
+        <div class="cow-4">
+            {% csrf_token %}
+            {{ form.as_p }}
+        </div>
+        <button form="edit_form" type="submit">Сохранить</button>
+    </form>
+</div>
+</body>
+</html>

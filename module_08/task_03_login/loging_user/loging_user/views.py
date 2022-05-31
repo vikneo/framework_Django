@@ -10,6 +10,7 @@ class MainView(View):
 
     def post(self, request):
         if request.POST['username'] == 'admin':
-            return HttpResponse('Добро пожаловать Админ!')
+            # return HttpResponse('Добро пожаловать Админ!')
+            return render(request, 'app_user/admin.html')
         else:
             return render(request, 'app_user/index.html')

@@ -42,3 +42,7 @@ from django.contrib.auth.views import LoginView
 
 class AuthLoginView(LoginView):
     template_name: str = 'app_user/login.html'
+
+
+class AuthLogoutView(LoginView):
+    pass

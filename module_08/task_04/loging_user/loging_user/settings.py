@@ -121,3 +121,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = '/'
+
+SESSION_COOKIE_AGE = 60
+
+SESSION_COOKIE_NAME = 'sessionname'   # по умолчанию sessionid
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False   # по умолчанию False

@@ -124,6 +124,6 @@ LOGIN_REDIRECT_URL = '/'
 
 SESSION_COOKIE_AGE = 60
 
-SESSION_COOKIE_NAME = 'sessionprof'   # по умолчанию sessionid
+SESSION_COOKIE_NAME = 'sessionid'   # по умолчанию sessionid
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False   # по умолчанию False

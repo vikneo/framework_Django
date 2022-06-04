@@ -1,9 +1,9 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from django.shortcuts import render
 from app_user.forms import AuthForm
 from datetime import datetime
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 
 
 # def login_user(request):
@@ -40,9 +40,15 @@ from django.contrib.auth.views import LoginView
 #     return render(request, 'app_user/login.html', context=context)
 
 
+# def logout_view(request):
+#     logout(request)
+#     return HttpResponse('Вы успешно вышли из под учетной записи')
+
+
 class AuthLoginView(LoginView):
     template_name: str = 'app_user/login.html'
 
 
-class AuthLogoutView(LoginView):
-    pass
+class AuthLogoutView(LogoutView):
+    # template_name = 'app_user/index.html'
+    next_page = '/'

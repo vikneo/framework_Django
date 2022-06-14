@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Данные пользователя</title>
+</head>
+<body>
+
+{% if request.user.is_authenticated %}
+<h2>Данные пользователя: {{ request.user.first_name }}</h2>
+<ul>
+    <li>Логин: {{ request.user.username }}</li>
+    <li>Имя: {{ request.user.first_name }}</li>
+    <li>Фамилия: {{ request.user.last_name }}</li>
+    <li>Почта: {{ request.user.email }}</li>
+</ul>
+{% endif %}
+</body>
+</html>

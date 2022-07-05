@@ -1,5 +1,4 @@
 import re
-
 from django.http import HttpResponse
 from django.shortcuts import render
 from media.forms import FileUploadForm, ReadFileForm
@@ -26,7 +25,10 @@ def read_file(request):
         read_file_form = ReadFileForm(request.POST, request.FILES)
         if read_file_form.is_valid():
             text_file = read_file_form.cleaned_data['file'].read()
-            text_str = text_file.decode('CP1251')
+            try:
+                text_str = text_file.decode('utf-8').split('\n')
+            except Exception:
+                text_str = text_file.decode('CP1251').split('\n')
             for work in smoke:
                 print("\n", re.findall(fr'\b{work}', text_str.lower()), "\n")
                 if re.findall(fr'\b{work}', text_str.lower(), 1):
